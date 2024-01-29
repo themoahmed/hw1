@@ -12,12 +12,59 @@ the function below should be the only one in this file.
 
 #include "split.h"
 
+
+
 /* Add a prototype for a helper function here if you need */
 
 void split(Node*& in, Node*& odds, Node*& evens)
 {
-  /* Add code here */
-// WRITE YOUR CODE HERE
-}
+    // Base case, Node in is an empty list 
+    if (in == nullptr) {
 
-/* If you needed a helper function, write it here */
+        odds = nullptr;
+
+        evens = nullptr;
+        //Will return both lists as null
+        return;
+    }
+
+    // Recursive cases 
+
+
+    if (in->value % 2 == 0) {
+        // Current node has an even value
+
+       
+        if (evens == nullptr) {
+            //adds node to even
+            evens = in;
+
+            //Sets the head to the next node effectively removing the current node.
+            in = in->next;
+
+            // Cut off the current node from the input list
+            evens->next = nullptr; 
+
+            //call split function again  
+            split(in, odds, evens->next);
+
+        } 
+        
+    } else {
+        // Current node has an odd value
+        if (odds == nullptr) {
+
+            odds = in;
+
+            in = in->next;
+            
+            // Cut off the current node from the input list
+            odds->next = nullptr; 
+
+            split(in, odds->next, evens);
+        } 
+        
+    }
+
+
+}
