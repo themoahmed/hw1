@@ -79,13 +79,13 @@ void ULListStr::push_front(const std::string& val)
 {
     
   if (empty()) {
-          //List is empty
+    
           head_ = new Item();
           tail_ = head_;
-          head_->first = ARRSIZE - 1; // Assuming ARRSIZE is the size of the array in Item
+          head_->first = ARRSIZE - 1;
           head_->last = ARRSIZE;
       } else if (head_->first == 0) {
-          // Case 2: No space at the beginning of the current head
+        
           Item* newHead = new Item();
           newHead->next = head_;
           head_->prev = newHead;
@@ -93,11 +93,11 @@ void ULListStr::push_front(const std::string& val)
           head_->first = ARRSIZE - 1;
           head_->last = ARRSIZE;
       } else {
-          // Case 3: Space available at the beginning of the current head
+          
           --head_->first;
       }
 
-      // Insert the value and update the size
+   
       head_->val[head_->first] = val;
       ++size_;
 
