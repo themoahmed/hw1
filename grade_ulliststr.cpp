@@ -7,6 +7,7 @@
 #include <vector>
 #include <iostream>
 #include <sstream>
+using namespace std;
 
 typedef int Seed;
 
@@ -362,8 +363,9 @@ TEST(ListRemove, RepeatedOneEleRemoveFront)
 
 	for(int count = 0; count < 4; ++count)
 	{
-		list.push_back("test");
 
+		list.push_back("test");
+	
 		EXPECT_EQ("test", list.get(0));
 
 		list.pop_front();
