@@ -7,7 +7,7 @@
 #include <vector>
 #include <iostream>
 #include <sstream>
-using namespace std;
+
 
 typedef int Seed;
 
