@@ -82,24 +82,27 @@ void ULListStr::push_front(const std::string& val)
     
           head_ = new Item();
           tail_ = head_;
-          head_->first = ARRSIZE - 1;
-          head_->last = ARRSIZE;
+          head_->first = 0;
+          head_->last = 1;
+          head_->val[0] = val;
       } else if (head_->first == 0) {
         
-          Item* newHead = new Item();
-          newHead->next = head_;
-          head_->prev = newHead;
-          head_ = newHead;
-          head_->first = ARRSIZE - 1;
-          head_->last = ARRSIZE;
+          Item* back = new Item();
+          back->next = head_;
+          head_->prev = back;
+          head_ = back;
+          head_->first = 0;
+          head_->last = 1;
+          head_->val[0]=val;
       } else {
           
-          --head_->first;
+          head_->val[head_->first-1] = val;
+          head_->first-=1;
       }
 
    
-      head_->val[head_->first] = val;
-      ++size_;
+      
+      size_+=1;
 
 }
 
